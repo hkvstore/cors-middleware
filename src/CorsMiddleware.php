@@ -52,13 +52,13 @@ final class CorsMiddleware implements MiddlewareInterface
     use DoublePassTrait;
 
     /** @var int */
-    private const PORT_HTTP = 80;
+    private const int PORT_HTTP = 80;
 
     /** @var int */
-    private const PORT_HTTPS = 443;
+    private const int PORT_HTTPS = 443;
 
     /** @var LoggerInterface|null */
-    private $logger;
+    private ?LoggerInterface $logger;
 
     /**
      * @var array{
@@ -73,7 +73,7 @@ final class CorsMiddleware implements MiddlewareInterface
      *  logger: null|LoggerInterface,
      * }
      */
-    private $options = [
+    private array $options = [
         "origin" => ["*"],
         "methods" => ["GET", "POST", "PUT", "PATCH", "DELETE"],
         "headers.allow" => [],
@@ -378,7 +378,7 @@ final class CorsMiddleware implements MiddlewareInterface
      * Set the PSR-3 logger.
      * @phpstan-ignore method.unused
      */
-    private function logger(LoggerInterface $logger = null): void
+    private function logger(?LoggerInterface $logger = null): void
     {
         $this->logger = $logger;
     }
@@ -389,7 +389,7 @@ final class CorsMiddleware implements MiddlewareInterface
     private function processError(
         ServerRequestInterface $request,
         ResponseInterface $response,
-        array $arguments = null
+        ?array $arguments = null
     ): ResponseInterface {
         if (is_callable($this->options["error"])) {
             $handler_response = $this->options["error"]($request, $response, $arguments);
