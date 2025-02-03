@@ -58,7 +58,7 @@ final class CorsMiddleware implements MiddlewareInterface
     private const PORT_HTTPS = 443;
 
     /** @var LoggerInterface|null */
-    private ?LoggerInterface $logger;
+    private ?LoggerInterface $logger = null;
 
     /**
      * @var array{
