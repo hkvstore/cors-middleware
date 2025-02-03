@@ -52,10 +52,10 @@ final class CorsMiddleware implements MiddlewareInterface
     use DoublePassTrait;
 
     /** @var int */
-    private const int PORT_HTTP = 80;
+    private const PORT_HTTP = 80;
 
     /** @var int */
-    private const int PORT_HTTPS = 443;
+    private const PORT_HTTPS = 443;
 
     /** @var LoggerInterface|null */
     private ?LoggerInterface $logger;
